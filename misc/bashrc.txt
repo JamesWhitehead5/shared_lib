@@ -1,0 +1,5 @@
+alias jn='clear; jupyter notebook;'
+alias iqo='sshpass -p Aug8/1902 ssh iqo@iqo.ee.washington.edu'
+alias pf='sshpass -p Aug8/1902 ssh -N -f -L localhost:8889:localhost:8889 iqo@iqo.ee.washington.edu'
+alias pf8888='sshpass -p Aug8/1902 ssh -N -f -L localhost:8888:localhost:8888 iqo@iqo.ee.washington.edu'
+
