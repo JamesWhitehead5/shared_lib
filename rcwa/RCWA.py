@@ -10,7 +10,6 @@ __maintainer__ = "Luocheng Huang"
 __email__ = "luocheng@uw.edu"
 __status__ = "Production"
 
-import S4
 import pandas as pd
 import os
 import numpy as np
@@ -18,18 +17,22 @@ import math
 import time as time
 from multiprocessing import Pool
 import matplotlib.pyplot as plt
+import S4
 
-CWD = os.getcwd()+'/'
+
+
+#CWD = os.getcwd()+'/'
 
 
     
-def simulate_one(config):
+def simulate_one(config, field=1):
     """a wrapper for pickling
     simulates one instance
     """
+    global FIELD
+    FIELD = field
     new = RCWA.Simulation()
     new.load_input(config)
-
     return new.run()
 
 
@@ -37,6 +40,7 @@ class RCWA:
     """
     An rcwa simulation ojbect
     """
+    
     
     def __init__(self, input_list=None, cores=10, field = None):
         self.input = input_list
@@ -204,7 +208,7 @@ class RCWA:
                 given the material in string, wavelength in µm
                 output (n,k)
                 """
-                mat = pd.read_csv(CWD+'n_data/{}_n.csv'.format(material))
+                mat = pd.read_csv('../rcwa/n_data/{}_n.csv'.format(material))
 
                 w = mat['Wavelength, µm']
                 n_list = mat['n']
